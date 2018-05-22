@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import ApartmentList from './pages/ApartmentList'
-import ApartmentDetail from './pages/ApartmentDetail'
-import { getApartments } from './api/index.js'
+import ApartmentList from '../pages/ApartmentList'
+import ApartmentDetail from '../pages/ApartmentDetail'
+import { getApartments } from '../api/index.js'
+import Login from '../components/Login';
 
 class App extends Component {
   /*constructor(props){
@@ -65,6 +66,7 @@ componentWillMount() {
                     <Route exact path="/" render={(props) => <ApartmentList apartments={this.state.apartments}/>} />
 
                     <Route exact path="/ApartmentDetail" component={ApartmentDetail} />
+                    <Route exact path="/login" component={Login} />
                 </Switch>
             </Router>
         </div>
