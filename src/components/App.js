@@ -3,50 +3,20 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ApartmentList from '../pages/ApartmentList'
 import ApartmentDetail from '../pages/ApartmentDetail'
 import { getApartments } from '../api/index.js'
-import Login from '../components/Login';
+import Login from '../components/Login'
+import withAuth from './withAuth'
+import AuthService from '../services/AuthService'
+
+/*const Auth = new AuthService()*/
 
 class App extends Component {
-  /*constructor(props){
-      super(props)
-      this.state = {
-        apartments: [
-          {
-            id: 1,
-            streetName: 'Beryl',
-            streetNum: '1333',
-            city: 'San Diego',
-            zip: '92109',
-            state: 'CA',
-            manager:  'Fat Bluto',
-            managerNum: '888-555-3232',
-            managerHours: '8am-2pm'
-          },
-          {
-            id: 2,
-            streetName: 'Beryl',
-            streetNum: '11333',
-            city: 'San Diego',
-            zip: '92109',
-            state: '1CA',
-            manager:  'Fat1 Bluto',
-            managerNum: '1888-555-3232',
-            managerHours: '8am-2pm'
-          }
-        ]
-      }
-    }
-*/
-
-
-
-
 
 constructor(props){
     super(props)
     this.state = {
         apartments: []
     }
-}
+  }
 
 componentWillMount() {
     getApartments()
@@ -55,11 +25,18 @@ componentWillMount() {
             apartments: APIapartments
         })
     })
-}
+  }
+/*handleLogout(){ // <- Remove local storage, and redirect the user
+    Auth.logout()
+    this.props.history.replace('/login')
+  }*/
+
 
   render() {
     return (
+
         <div>
+          <header><h1>Test</h1></header>
             <Router>
                 <Switch>
 
@@ -69,10 +46,13 @@ componentWillMount() {
                     <Route exact path="/login" component={Login} />
                 </Switch>
             </Router>
+
         </div>
     );
   }
 }
 
-
+/*<p className="App-intro">
+<button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
+</p>*/
 export default App;
