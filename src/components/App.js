@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ApartmentList from '../pages/ApartmentList'
 import ApartmentDetail from '../pages/ApartmentDetail'
+import NewApt from '../pages/NewApt'
 import { getApartments } from '../api/index.js'
 import Login from '../components/Login'
 import withAuth from './withAuth'
@@ -36,7 +37,7 @@ ccomponentWillMount(){
     return (
 
         <div>
-          <header><h1>92109 Crappy Prop Management</h1>
+          <header><h1>92109 Crappy Prop Management</h1><br></br>
           {this.state.user &&
           <div>
             <h2>Your Account</h2>
@@ -59,6 +60,7 @@ ccomponentWillMount(){
                   <Route exact path="/ApartmentList" component={ApartmentList}/>
                     <Route exact path="/" component={Login} />
                     <Route exact path="/ApartmentDetail" component={ApartmentDetail} />
+                    <Route exact path="/CreateApt" component={NewApt} />
                 </Switch>
             </Router>
 
