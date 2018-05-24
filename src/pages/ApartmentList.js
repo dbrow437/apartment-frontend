@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {Col, Row, ListGroup, ListGroupItem} from 'react-bootstrap'
 import {getApartments} from '../api'
-
+import withAuth from '../components/withAuth'
+import AuthService from '../services/AuthService'
+import login from '../components/Login'
 console.log(getApartments());
 
 
+const Auth = new AuthService()
 
 class ApartmentList extends Component {
 //Alysia's code
@@ -25,6 +28,12 @@ class ApartmentList extends Component {
  			})
  		})
  	}
+
+  handleLogout(){ // <- Remove local storage, and redirect the user
+      Auth.logout()
+      this.props.history.replace('/')
+
+    }
 //Rendering using flex
 /*render() {
 		const { apartments } = this.state
@@ -62,9 +71,13 @@ class ApartmentList extends Component {
 	}
 }*/
   render() {
+    console.log('list history', this.props);
     return (
-    
+
     <div>
+      <p className="App-intro">
+      <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
+      </p>
       <Row>
       <Col xs={12}>
               <ListGroup>
@@ -92,4 +105,4 @@ class ApartmentList extends Component {
   }
 }
 
-export default ApartmentList;
+export default withAuth(ApartmentList)

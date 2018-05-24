@@ -9,6 +9,7 @@ class Login extends Component {
     this.state={
       email: '',
       password: ''
+
     }
   }
 
@@ -20,12 +21,13 @@ class Login extends Component {
       e.preventDefault()
       this.Auth.login(this.state.email,this.state.password)
       .then(res =>{
-        this.props.history.replace('/')
+        this.props.history.replace('/ApartmentList')
       })
       .catch(err =>{ alert(err) })
     }
 
   render() {
+    console.log('login history', this.props);
     return (
       <div className="center">
         <div className="card">

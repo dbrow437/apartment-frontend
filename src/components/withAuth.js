@@ -13,7 +13,7 @@ export default function withAuth(WrappedComponent) {
 
     componentWillMount() {
       if (!Auth.loggedIn()) {
-        this.props.history.replace('/login')
+        this.props.history.replace('/')
       }
       else {
         try {
@@ -24,7 +24,7 @@ export default function withAuth(WrappedComponent) {
         }
         catch(err){
           Auth.logout()
-          this.props.history.replace('/login')
+          this.props.history.replace('/')
         }
       }
     }
