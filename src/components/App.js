@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
 import ApartmentList from '../pages/ApartmentList'
 import ApartmentDetail from '../pages/ApartmentDetail'
 import NewApt from '../pages/NewApt'
@@ -22,7 +22,8 @@ constructor(props){
 
 ccomponentWillMount(){
     const userId = Auth.getUserId()
-    Auth.fetch(`http://localhost:3000/users/${userId}`).then( res => {
+    //Auth.fetch(`http://localhost:3000/users/${userId}`).then( res => {
+      Auth.fetch(`https://crappy-apts.herokuapp.com/users/${userId}`).then( res => {
       this.setState({ user: res })
     })
   }
